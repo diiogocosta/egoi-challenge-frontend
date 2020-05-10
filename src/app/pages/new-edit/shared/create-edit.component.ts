@@ -4,7 +4,10 @@ import { CategoryService } from 'src/app/services/category.service';
 import { Category } from 'src/app/models/category';
 import { ToastrService } from 'ngx-toastr';
 
-@Component({})
+@Component({
+  selector: 'app-create-edit',
+  template: '',
+})
 export class CreateEditCategoryComponent implements OnInit {
   public form: FormGroup;
   public categoryList: Category[];

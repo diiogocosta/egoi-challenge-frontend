@@ -12,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./list.component.scss'],
 })
 export class ListComponent implements OnInit {
-  @ViewChild(SlideTreeComponent, { static: false })
+  @ViewChild(SlideTreeComponent)
   slideTree: SlideTreeComponent;
   public categoryList: Category[];
   public loading = false;
