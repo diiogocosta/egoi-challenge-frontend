@@ -1,0 +1,8 @@
+<ngx-loading [show]="loading"></ngx-loading>
+<div class="list-container">
+  <app-slide-tree
+    [category]="categoryList"
+    (delete)="delete($event)"
+    (edit)="edit($event)"
+  ></app-slide-tree>
+</div>

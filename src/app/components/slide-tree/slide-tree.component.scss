@@ -1,0 +1,125 @@
+@import 'colors.scss';
+
+.tree-container {
+  overflow: hidden;
+  white-space: nowrap;
+  min-height: 200px;
+  padding-bottom: 40px;
+}
+
+.tree-page {
+  width: 400px;
+  max-height: 900px;
+  display: inline-block;
+  vertical-align: top;
+  border-right: 1px solid rgb(113, 89, 193, 0.3);
+}
+
+.tree-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  border-radius: 5px;
+  padding: 0px 35px;
+  margin: 0 10px 10px;
+  background-color: $primary;
+  font-size: 24px;
+  color: #fff;
+
+  &.active {
+    opacity: 1;
+    background-color: #544099;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  .item-actions {
+    display: flex;
+    align-items: center;
+    .item-count {
+      border-radius: 4px;
+      padding: 0px 15px;
+      color: $primary;
+      background-color: #fff;
+      font-size: 12px;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    span:last-child {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 8px 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  }
+
+  div {
+    max-width: 200px;
+    overflow: hidden;
+  }
+}
+
+.custom-dropdown {
+  background-color: $secondary;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  z-index: 1;
+
+  li {
+    color: $primary;
+    font-weight: bold;
+    padding: 5px 10px;
+  }
+
+  li:hover {
+    opacity: 0.9;
+  }
+}
+
+.move {
+  top: 50%;
+  z-index: 1;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  background-color: #fff;
+  color: $primary;
+  position: sticky;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.move-left {
+  @extend .move;
+  left: 0;
+}
+
+.move-right {
+  @extend .move;
+  left: 100%;
+}
+
+.empty {
+  height: 300px;
+  width: 100%;
+  position: relative;
+  border: 1px dashed #7159c1;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  color: #7159c1;
+}

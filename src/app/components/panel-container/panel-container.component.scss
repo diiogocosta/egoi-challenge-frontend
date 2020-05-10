@@ -1,0 +1,14 @@
+@import 'colors.scss';
+
+.panel-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  div {
+    border-radius: 5px;
+    padding: 25px;
+    width: 400px;
+    background-color: $primary;
+  }
+}

@@ -1,0 +1,68 @@
+<div class="move-left" (click)="slideRef.slideLeft()">
+  <i class="fas fa-angle-left"></i>
+</div>
+<div class="move-right" (click)="slideRef.slideRight()">
+  <i class="fas fa-angle-right"></i>
+</div>
+<div class="tree-container" slideManager #slideRef="slideManager">
+  <div class="empty" *ngIf="!category?.length">
+    Não possui categorias para visualizar.
+  </div>
+  <ng-container
+    *ngFor="let page of treePage; let pageIndex = index"
+    [ngTemplateOutlet]="treePageTemplate"
+    [ngTemplateOutletContext]="{
+      categories: page.categories,
+      pageIndex: pageIndex
+    }"
+  >
+  </ng-container>
+</div>
+
+<ng-template
+  #treePageTemplate
+  let-categories="categories"
+  let-pageIndex="pageIndex"
+>
+  <div class="tree-page">
+    <div
+      *ngFor="let item of categories; let categoryIndex = index"
+      class="tree-item"
+      [ngClass]="{ active: item.id === treePage[pageIndex].active?.id }"
+      (click)="selectNode(pageIndex, item, item.categories)"
+    >
+      <div>
+        <strong>
+          {{ item.name }}
+        </strong>
+      </div>
+      <div class="item-actions">
+        <span class="item-count" *ngIf="item.categories">
+          {{ item.categories.length }}
+        </span>
+
+        <i class="fas fa-angle-right" *ngIf="item.categories"></i>
+
+        <span ngbDropdown [autoClose]="'outside'">
+          <span ngbDropdownToggle (click)="$event.stopPropagation()">
+            <i class="fas fa-ellipsis-h"></i>
+          </span>
+          <div
+            class="custom-dropdown"
+            ngbDropdownMenu
+            (click)="$event.stopPropagation()"
+          >
+            <ul>
+              <li (click)="edit.emit(item.id)">
+                Editar
+              </li>
+              <li (click)="deleteNode(item, pageIndex, categoryIndex)">
+                Remover
+              </li>
+            </ul>
+          </div>
+        </span>
+      </div>
+    </div>
+  </div>
+</ng-template>

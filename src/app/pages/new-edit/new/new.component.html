@@ -1,0 +1,33 @@
+<div class="new-form">
+  <app-panel-container title="Nova categoria">
+    <form [formGroup]="form">
+      <div class="form-group">
+        <label>Nome</label>
+        <input
+          class="form-control"
+          [ngClass]="{ 'is-invalid': form.invalid && form.touched }"
+          type="text"
+          maxlength="100"
+          formControlName="name"
+        />
+      </div>
+      <div class="form-group">
+        <label>Categoria</label>
+        <select class="form-control" formControlName="categoryId">
+          <option [value]="null">Sem categoria</option>
+          <option *ngFor="let category of categoryList" [value]="category.id">{{
+            category.name
+          }}</option>
+        </select>
+      </div>
+      <button
+        [disabled]="form.invalid"
+        (click)="save()"
+        class="btn btn-primary"
+      >
+        Gravar
+      </button>
+      <a class="btn btn-link" [routerLink]="['/list']">Voltar</a>
+    </form>
+  </app-panel-container>
+</div>

@@ -1,1 +1,46 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@100;300;400;500;600;700&display=swap');
+@import 'colors.scss';
+
+body {
+  font-family: 'Jost', sans-serif;
+  background-color: $secondary;
+  color: #fff;
+}
+
+// Some bootstrap overrides;
+
+.dropdown-toggle::after {
+  display: none;
+}
+
+.btn-primary {
+  background-color: #fff;
+  border: none;
+  color: $primary;
+
+  &:hover,
+  &:active,
+  &:focus,
+  &:not(:disabled):not(.disabled):active {
+    background-color: $secondary;
+    color: $primary;
+    outline: none;
+    box-shadow: none;
+  }
+
+  &:disabled {
+    opacity: 0.7;
+    background-color: #fff;
+    color: $primary;
+  }
+}
+
+.btn-link {
+  color: #fff;
+
+  &:hover,
+  &:active {
+    color: #fff;
+  }
+}
