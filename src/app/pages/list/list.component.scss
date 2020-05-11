@@ -1,5 +1,18 @@
+@import 'colors.scss';
+
 .list-container {
   padding: 50px;
   min-height: 200px;
   min-width: 400px;
+}
+
+.search-container {
+  margin-left: 50px;
+  width: 380px;
+  position: sticky;
+  top: 65px;
+  z-index: 1;
+  padding: 20px 0px;
+  color: $primary;
+  background-color: $secondary;
 }

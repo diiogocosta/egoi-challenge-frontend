@@ -24,17 +24,10 @@ export class ListComponent implements OnInit {
 
   ngOnInit() {
     this.loading = true;
-    this.categoryService
-      .readAll()
-      .pipe(
-        finalize(() => {
-          this.loading = false;
-          setTimeout(() => {
-            this.slideTree.buildTree();
-          }, 100);
-        })
-      )
-      .subscribe((categories) => (this.categoryList = categories));
+    this.categoryService.readAll().subscribe((categories) => {
+      this.loading = false;
+      this.categoryList = categories;
+    });
   }
 
   delete(id) {
@@ -64,5 +57,17 @@ export class ListComponent implements OnInit {
 
   edit(id) {
     this.router.navigate([`edit/${id}`]);
+  }
+
+  doSearch(event, value) {
+    if (event.key === 'Enter') {
+      this.loading = true;
+      this.categoryService
+        .readAll(false, null, value)
+        .subscribe((categories) => {
+          this.loading = false;
+          this.categoryList = categories;
+        });
+    }
   }
 }

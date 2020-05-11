@@ -15,7 +15,14 @@ import { Category } from 'src/app/models/category';
   templateUrl: './slide-tree.component.html',
 })
 export class SlideTreeComponent {
-  @Input() category: Category[] = [];
+  @Input() set category(value: Category[]) {
+    this._category = value;
+    this.buildTree();
+  }
+
+  get category() {
+    return this._category;
+  }
   @Output() delete = new EventEmitter();
   @Output() edit = new EventEmitter();
 
@@ -24,6 +31,7 @@ export class SlideTreeComponent {
     active: Category;
   }[] = [];
 
+  private _category: Category[];
   private deleteReference: {
     pageIndex: number;
     categoryIndex: number;

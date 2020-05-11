@@ -21,9 +21,13 @@ export class CategoryService {
     return this.http.get<Category>(this.apiUrl, requestOptions);
   }
 
-  public readAll(flat = false, dependentId = null) {
+  public readAll(flat = false, dependentId = null, search = null) {
     return this.http.get<Category[]>(this.apiUrl, {
-      params: { flat: flat.toString(), dependentId },
+      params: {
+        flat: flat.toString(),
+        dependentId,
+        ...(search && { search }),
+      },
       headers: this.headers,
     });
   }
